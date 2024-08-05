@@ -18,56 +18,56 @@ const Shop = () => {
         {
             _id: '1',
             productImage3: image1,
-            categoryName: 'Shampoo',
+            categoryName: 'Zincfer',
             productSize: [{ finalPrice: 200, price: 250, discountPrice: 20 }]
         },
         {
             _id: '2',
             productImage3: image2,
-            categoryName: 'Conditioner',
+            categoryName: 'Zens-Liv-S',
             productSize: [{ finalPrice: 300, price: 350, discountPrice: 15 }]
         },
         {
             _id: '3',
             productImage3: image3,
-            categoryName: 'Shampoo',
+            categoryName: 'Zincfer',
             productSize: [{ finalPrice: 180, price: 220, discountPrice: 25 }]
         },
         {
             _id: '4',
             productImage3: image4,
-            categoryName: 'Conditioner',
+            categoryName: 'Zens-Liv-S',
             productSize: [{ finalPrice: 320, price: 370, discountPrice: 10 }]
         },
         {
             _id: '5',
             productImage3: image5,
-            categoryName: 'Shampoo',
+            categoryName: 'Zincfer',
             productSize: [{ finalPrice: 210, price: 260, discountPrice: 15 }]
         },
         {
             _id: '6',
             productImage3: image6,
-            categoryName: 'Conditioner',
+            categoryName: 'Zens-Liv-S',
             productSize: [{ finalPrice: 330, price: 380, discountPrice: 12 }]
         },
         {
             _id: '7',
             productImage3: image7,
-            categoryName: 'Shampoo',
+            categoryName: 'Zincfer',
             productSize: [{ finalPrice: 250, price: 300, discountPrice: 20 }]
         },
         {
             _id: '8',
             productImage3: image8,
-            categoryName: 'Conditioner',
+            categoryName: 'Zens-Liv-S',
             productSize: [{ finalPrice: 340, price: 390, discountPrice: 8 }]
         },
     ]
 
     const categories = [
-        { categoryName: 'Shampoo' },
-        { categoryName: 'Conditioner' },
+        { categoryName: 'Zincfer' },
+        { categoryName: 'Zens-Liv-S' },
         // Add more categories as needed
     ]
 
