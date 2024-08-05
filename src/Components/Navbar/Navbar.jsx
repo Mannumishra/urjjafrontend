@@ -32,7 +32,8 @@ const Navbar = () => {
               <div className="navbar-nav ms-auto">
                 <Link to="/" className="nav-item nav-link active text-dark">Home</Link>
                 {/* <Link to="/about" className="nav-item nav-link">About</Link> */}
-                <Link to="/product" className="nav-item nav-link">Products</Link>
+                <Link to="/product" className="nav-item nav-link">Shop</Link>
+                <Link to="/shop" className="nav-item nav-link">Product</Link>
                 <Link to="/feature" className="nav-item nav-link">Features</Link>
                 <Link to="/how_to_use" className="nav-item nav-link">How To Use</Link>
                 {/* <div className="nav-item dropdown">

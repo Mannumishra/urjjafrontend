@@ -26,6 +26,7 @@ import Checkout from './Components/Checkout/Checkout';
 import UpdateProfile from './Components/Profile/UpdateProfile';
 import Profile from './Components/Profile/Profile';
 import PaymentSuccess from './Components/Payment/PaymentSuccess';
+import Shop from './Components/Shop/Shop';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/product' element={<Product />} />
+          <Route path='/shop' element={<Shop />} />
           <Route path='/details/:_id' element={<SinglePage />} />
           <Route path='/feature' element={<Feauture />} />
           <Route path='/how_to_use' element={<HowToUse />} />

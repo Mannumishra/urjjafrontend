@@ -8,6 +8,7 @@ import Product from '../Product/Product'
 import Newsletter from '../Newsletter/Newsletter'
 import Testimonial from '../Testimonial/Testimonial'
 import Blog from '../Blog/Blog'
+import Shop from '../Shop/Shop'
 
 const Home = () => {
   return (
@@ -17,8 +18,8 @@ const Home = () => {
       <Product />
       <DealStart />
       <Feauture />
-      <Product />
-      <HowToUse />
+      <Shop />
+      {/* <HowToUse /> */}
       {/* <Product /> */}
       <Testimonial />
       <Blog />
