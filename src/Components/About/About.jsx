@@ -36,20 +36,20 @@ const About = () => {
                 <div class="container">
                     <div class="row g-4" >
                         <div class="col-md-3 py-5 px-3" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                            <i class="fa fa-leaf fa-3x text-dark mb-4"></i>
-                            <h5 class="text-dark mb-0">100% Natural</h5>
+                            <i class="fa fa-pills fa-3x text-dark mb-4"></i>
+                            <h5 class="text-dark mb-0">100% Organic</h5>
                         </div>
                         <div className="col-md-3 py-5 px-3" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                            <i class="fa fa-tint-slash fa-3x text-dark mb-4"></i>
-                            <h5 class="text-dark mb-0">Anti Hair Fall</h5>
+                            <i class="fa fa-heartbeat fa-3x text-dark mb-4"></i>
+                            <h5 class="text-dark mb-0">Boosts Immunity</h5>
                         </div>
                         <div className="col-md-3 py-5 px-3" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                            <i class="fa fa-times fa-3x text-dark mb-4"></i>
-                            <h5 class="text-dark mb-0">Hypoallergenic</h5>
+                            <i class="fa fa-stethoscope fa-3x text-dark mb-4"></i>
+                            <h5 class="text-dark mb-0">Clinically Tested</h5>
                         </div>
                         <div class="col-md-3 py-5 px-3" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                            <i class="fa fa-leaf fa-3x text-dark mb-4"></i>
-                            <h5 class="text-dark mb-0">FAD Approved</h5>
+                            <i class="fa fa-certificate fa-3x text-dark mb-4"></i>
+                            <h5 class="text-dark mb-0">Certified Quality</h5>
                         </div>
                         {/* <div className="col-md-2 py-5 px-3" style={{display:"flex",flexDirection:"column" ,justifyContent:"center" ,alignItems:"center"}}>
                             <i class="fa fa-tint-slash fa-3x text-dark mb-4"></i>

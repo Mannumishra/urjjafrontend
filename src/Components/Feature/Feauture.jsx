@@ -40,28 +40,29 @@ const Feauture = () => {
                                 <div class="feature-item position-relative bg-primary text-center p-3">
                                     <div class="border py-5 px-3">
                                         <i class="fa fa-leaf fa-3x text-dark mb-4"></i>
-                                        <h5 class="text-white mb-0">100% Natural</h5>
+                                        <h5 class="text-white mb-0">100% Natural Ingredients</h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                                 <div class="feature-item position-relative bg-primary text-center p-3">
                                     <div class="border py-5 px-3">
-                                        <i class="fa fa-tint-slash fa-3x text-dark mb-4"></i>
-                                        <h5 class="text-white mb-0">Anti Hair Fall</h5>
+                                        <i class="fa fa-medkit fa-3x text-dark mb-4"></i>
+                                        <h5 class="text-white mb-0">Effective Remedies</h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
                                 <div class="feature-item position-relative bg-primary text-center p-3">
                                     <div class="border py-5 px-3">
-                                        <i class="fa fa-times fa-3x text-dark mb-4"></i>
-                                        <h5 class="text-white mb-0">Hypoallergenic</h5>
+                                        <i class="fa fa-heartbeat fa-3x text-dark mb-4"></i>
+                                        <h5 class="text-white mb-0">Clinically Tested</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div> : null
             }
             {/* <!-- Feature End --> */}
