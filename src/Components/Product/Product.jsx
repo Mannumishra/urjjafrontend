@@ -155,7 +155,7 @@ const Product = () => {
                                                     </div>
                                                     <h5 className="text-primary mb-3"><span>{item.productSize[0].discountPrice}% OFF</span></h5>
                                                     <h5 className="text-primary mb-3">&#8377; {item.productSize[0].finalPrice} &nbsp; <span><del className='text-danger'>&#8377; {item.productSize[0].price}</del></span></h5>
-                                                    <Link to={`/details/${item._id}`} className="btn btn-outline-primary px-3">See Details</Link>
+                                                    <Link  className="btn btn-outline-primary px-3">See Details</Link>
                                                 </div>
                                             </div>
                                         ))}
@@ -191,7 +191,7 @@ const Product = () => {
                                                 </div>
                                                 <h5 className="text-primary mb-3"><span>{item.productSize[0].discountPrice}% OFF</span></h5>
                                                 <h5 className="text-primary mb-3">&#8377; {item.productSize[0].finalPrice} &nbsp; <span><del className='text-danger'>&#8377; {item.productSize[0].price}</del></span></h5>
-                                                <Link to={`/details/${item._id}`} className="btn btn-outline-primary px-3">See Details</Link>
+                                                <Link  className="btn btn-outline-primary px-3">See Details</Link>
                                             </div>
                                         </div>
                                     )}
