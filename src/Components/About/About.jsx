@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
 import Newsletter from '../Newsletter/Newsletter'
 import { Link } from 'react-router-dom'
-import image from '../../Images/1-removebg-preview.png'
+import image from '../../Images/WhatsApp Image 2024-08-05 at 12.53.42.jpeg'
 
 const About = () => {
     const location = window.location.pathname
-    useEffect(()=>{
+    useEffect(() => {
         window.scrollTo({
-            top:0,
-            behavior:"smooth"
+            top: 0,
+            behavior: "smooth"
         })
-    },[])
+    }, [])
     return (
         <>
             {/* <!-- Hero Start --> */}
@@ -35,19 +35,19 @@ const About = () => {
             <div class="container-fluid py-5">
                 <div class="container">
                     <div class="row g-4" >
-                        <div class="col-md-3 py-5 px-3" style={{display:"flex",flexDirection:"column" ,justifyContent:"center" ,alignItems:"center"}}>
+                        <div class="col-md-3 py-5 px-3" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                             <i class="fa fa-leaf fa-3x text-dark mb-4"></i>
                             <h5 class="text-dark mb-0">100% Natural</h5>
                         </div>
-                        <div className="col-md-3 py-5 px-3" style={{display:"flex",flexDirection:"column" ,justifyContent:"center" ,alignItems:"center"}}>
+                        <div className="col-md-3 py-5 px-3" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                             <i class="fa fa-tint-slash fa-3x text-dark mb-4"></i>
                             <h5 class="text-dark mb-0">Anti Hair Fall</h5>
                         </div>
-                        <div className="col-md-3 py-5 px-3" style={{display:"flex",flexDirection:"column" ,justifyContent:"center" ,alignItems:"center"}}>
+                        <div className="col-md-3 py-5 px-3" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                             <i class="fa fa-times fa-3x text-dark mb-4"></i>
                             <h5 class="text-dark mb-0">Hypoallergenic</h5>
                         </div>
-                        <div class="col-md-3 py-5 px-3" style={{display:"flex",flexDirection:"column" ,justifyContent:"center" ,alignItems:"center"}}>
+                        <div class="col-md-3 py-5 px-3" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                             <i class="fa fa-leaf fa-3x text-dark mb-4"></i>
                             <h5 class="text-dark mb-0">FAD Approved</h5>
                         </div>
@@ -90,19 +90,18 @@ const About = () => {
 
 
             {/* <!-- About Start --> */}
-            <div class="container-fluid">
-                <div class="container">
-                    <div class="row g-5 align-items-center">
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                            <img class="img-fluid animated pulse infinite" src={image} />
+            <div className="container-fluid">
+                <div className="container">
+                    <div className="row g-5 align-items-center">
+                        <div className="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                            <img className="img-fluid animated pulse infinite" src={image} alt="Medicine" />
                         </div>
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                            <h1 class="text-primary mb-4">Healthy Hair <span class="fw-light text-dark">Is A Symbol Of Our
-                                Beauty</span></h1>
-                            <p class="mb-4">Healthy hair is a powerful symbol of beauty, reflecting our overall well-being and enhancing our self-confidence. It indicates good health, as nutrient deficiencies and stress often first appear in the condition of our hair.</p>
-                            <p class="mb-4"> Culturally, hair represents status and identity, with healthy hair providing a versatile medium for personal expression. </p>
-                            <p className="mb-4"> Maintaining healthy hair involves a balanced diet rich in essential vitamins and minerals, proper hair care routines, hydration, stress management, and regular trims. By nurturing our hair, we not only improve our appearance but also promote our overall health and vitality.</p>
-                            <Link class="btn btn-primary py-2 px-4" to="/product">Shop Now</Link>
+                        <div className="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                            <h1 className="text-primary mb-4">Health is Wealth <span className="fw-light text-dark"> - Quality Medicines for Your Well-being</span></h1>
+                            <p className="mb-4">Quality medicine is essential for maintaining health and managing diseases effectively. It ensures that patients receive the correct treatment, leading to better health outcomes and improved quality of life.</p>
+                            <p className="mb-4">Our range of medicines is rigorously tested and approved to ensure they meet the highest standards of safety and efficacy. By choosing our products, you can trust that you are making a responsible choice for your health.</p>
+                            <p className="mb-4">In addition to high-quality medicines, we offer guidance on proper usage and dosage to maximize benefits and minimize risks. Our commitment to excellence in healthcare is reflected in every product we offer.</p>
+                            <Link className="btn btn-primary py-2 px-4" to="/product">Shop Now</Link>
                         </div>
                     </div>
                 </div>

@@ -1,55 +1,88 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import image1 from '../../Images/WhatsApp Image 2024-08-05 at 12.53.19.jpeg'
+import image2 from '../../Images/WhatsApp Image 2024-08-05 at 12.53.23.jpeg'
+import image3 from '../../Images/WhatsApp Image 2024-08-05 at 12.53.26 (1).jpeg'
+import image4 from '../../Images/WhatsApp Image 2024-08-05 at 12.53.26.jpeg'
+import image5 from '../../Images/WhatsApp Image 2024-08-05 at 12.53.27.jpeg'
+import image6 from '../../Images/WhatsApp Image 2024-08-05 at 12.53.28.jpeg'
+import image7 from '../../Images/WhatsApp Image 2024-08-05 at 12.53.29.jpeg'
+import image8 from '../../Images/WhatsApp Image 2024-08-05 at 12.53.30.jpeg'
 
 const Product = () => {
     const location = window.location.pathname
-    const [product, setProduct] = useState([])
+
     const [minPrice, setMinPrice] = useState(0)
     const [maxPrice, setMaxPrice] = useState(10000)
     const [category, setCategory] = useState('')
-    const [categories, setCategories] = useState([])
-    const [filteredProducts, setFilteredProducts] = useState([])
 
-    const getProductdata = async () => {
-        try {
-            const res = await axios.get("https://hapsserver.onrender.com/api/product")
-            setProduct(res.data.data)
-            setFilteredProducts(res.data.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    const getcategorydata = async () => {
-        try {
-            const res = await axios.get("https://hapsserver.onrender.com/api/category")
-            setCategories(res.data.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    const products = [
+        {
+            _id: '1',
+            productImage3: image1,
+            categoryName: 'Shampoo',
+            productSize: [{ finalPrice: 499, discountPrice: 10, price: 550 }]
+        },
+        {
+            _id: '2',
+            productImage3: image2,
+            categoryName: 'Conditioner',
+            productSize: [{ finalPrice: 399, discountPrice: 5, price: 420 }]
+        },
+        {
+            _id: '3',
+            productImage3: image3,
+            categoryName: 'Shampoo',
+            productSize: [{ finalPrice: 499, discountPrice: 10, price: 550 }]
+        },
+        {
+            _id: '4',
+            productImage3: image4,
+            categoryName: 'Conditioner',
+            productSize: [{ finalPrice: 399, discountPrice: 5, price: 420 }]
+        },
+        {
+            _id: '5',
+            productImage3: image5,
+            categoryName: 'Shampoo',
+            productSize: [{ finalPrice: 499, discountPrice: 10, price: 550 }]
+        },
+        {
+            _id: '6',
+            productImage3: image6,
+            categoryName: 'Conditioner',
+            productSize: [{ finalPrice: 399, discountPrice: 5, price: 420 }]
+        },
+        {
+            _id: '7',
+            productImage3: image7,
+            categoryName: 'Shampoo',
+            productSize: [{ finalPrice: 499, discountPrice: 10, price: 550 }]
+        },
+        {
+            _id: '8',
+            productImage3: image8,
+            categoryName: 'Conditioner',
+            productSize: [{ finalPrice: 399, discountPrice: 5, price: 420 }]
+        },
+    ]
 
-    useEffect(() => {
-        getProductdata()
-        getcategorydata()
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        })
-    }, [])
-
-    useEffect(() => {
-        filterProducts()
-    }, [minPrice, maxPrice, category])
+    const categories = [
+        { categoryName: 'Shampoo' },
+        { categoryName: 'Conditioner' },
+        // Add more categories as needed
+    ]
 
     const filterProducts = () => {
-        let filtered = product.filter(item => {
+        let filtered = products.filter(item => {
             let productPrice = item.productSize[0].finalPrice
             let matchesCategory = category ? item.categoryName === category : true
             return productPrice >= minPrice && productPrice <= maxPrice && matchesCategory
         })
-        setFilteredProducts(filtered)
+        return filtered
     }
+
+    const filteredProducts = filterProducts()
 
     return (
         <>
@@ -77,9 +110,10 @@ const Product = () => {
                     <div className="container-fluid py-5">
                         <div className="container">
                             <div className="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style={{ maxWidth: "600px" }}>
-                                <h1 className="text-primary mb-3"><span className="fw-light text-dark">Our Natural</span> Hair Products</h1>
-                                <p className="mb-5">Our natural hair products nourish and strengthen your hair, using organic ingredients for healthier, shinier, and more vibrant locks.</p>
+                                <h1 className="text-primary mb-3"><span className="fw-light text-dark">Our Natural</span> Medicines</h1>
+                                <p className="mb-5">Our natural medicines provide effective and holistic solutions for your health, using organic ingredients to support your well-being and vitality.</p>
                             </div>
+
                             <div className="row g-4">
                                 <div className="col-md-3">
                                     <div className="filter-section">
@@ -142,7 +176,7 @@ const Product = () => {
                             </div>
                             <div className="row g-4">
                                 {
-                                    product.map((item, index) =>
+                                    products.map((item, index) =>
                                         <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s" key={index}>
                                             <div className="product-item text-center border h-100 p-4">
                                                 <img className="img-fluid mb-4" src={item.productImage3} alt="" />
