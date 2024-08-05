@@ -35,7 +35,7 @@ const Navbar = () => {
                 <Link to="/product" className="nav-item nav-link">Shop</Link>
                 <Link to="/shop" className="nav-item nav-link">Product</Link>
                 <Link to="/feature" className="nav-item nav-link">Features</Link>
-                <Link to="/how_to_use" className="nav-item nav-link">How To Use</Link>
+                {/* <Link to="/how_to_use" className="nav-item nav-link">How To Use</Link> */}
                 {/* <div className="nav-item dropdown">
                   <Link to="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</Link>
                   <div className="dropdown-menu bg-light mt-2">
