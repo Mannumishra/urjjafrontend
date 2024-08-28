@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import image1 from '../../Images/e commerce 1.jpg'
-import image2 from '../../Images/e commerce 2.jpg'
-import image3 from '../../Images/e commerce 3.jpg'
+import image1 from '../../Images/ZENS 2.2.jpg'
+import image2 from '../../Images/ZENS 2.3.jpg'
+import image3 from '../../Images/ZENS 2.2.q.jpg'
 
 const HeroSection = () => {
   const [banner] = useState([
