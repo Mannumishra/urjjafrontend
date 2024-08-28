@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import add from '../../Images/user.png';
 import rem from '../../Images/check-out.png';
 import cart from '../../Images/online-shopping.png';
+import logo from '../../Images/ZENS logo TM CDR (1).png'
 
 const Navbar = () => {
   const [login, setLogin] = useState(false);
@@ -18,7 +19,8 @@ const Navbar = () => {
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light p-0">
             <Link to="/" className="navbar-brand">
-              <h2 className="text-dark">URZAA</h2>
+              {/* <h2 className="text-dark">URZAA</h2> */}
+              <img src={logo} alt="" style={{height:"50px"}}/>
             </Link>
             <button
               type="button"

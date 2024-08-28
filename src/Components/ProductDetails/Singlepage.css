@@ -204,8 +204,8 @@ color: orange;
 .cart-button,
 .buy-now-button {
   cursor: pointer;
-  background-color: #90BC79;
-  border-color: #90BC79;
+  background-color: #E4005C;
+  border-color: #E4005C;
   color: white;
   text-align: center;
   border-radius: 10px;
@@ -216,7 +216,7 @@ color: orange;
 
 .cart-button:hover,
 .buy-now-button:hover {
-  background-color: #90BC79;
+  background-color: #E4005C;
 }
 
 /* @media (max-width: 768px) {
