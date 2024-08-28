@@ -8334,7 +8334,9 @@ fieldset:disabled .btn {
 .text-dark {
     color: #E4005C !important
 }
-
+.headertext-dark {
+    color: #1c2900 !important
+}
 .text-white {
     color: #fff !important
 }

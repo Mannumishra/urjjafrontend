@@ -32,7 +32,7 @@ const Navbar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarCollapse">
               <div className="navbar-nav ms-auto">
-                <Link to="/" className="nav-item nav-link active text-dark">Home</Link>
+                <Link to="/" className="nav-item nav-link active headertext-dark">Home</Link>
                 {/* <Link to="/about" className="nav-item nav-link">About</Link> */}
                 <Link to="/product" className="nav-item nav-link">Shop</Link>
                 <Link to="/shop" className="nav-item nav-link">Product</Link>
