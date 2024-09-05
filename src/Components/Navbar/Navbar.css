@@ -1,0 +1,9 @@
+.navbar-toggler {
+    padding: .rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: rgba(0, 0, 0, 0);
+    border: 3px solid rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    transition: box-shadow .15s ease-in-out;
+}

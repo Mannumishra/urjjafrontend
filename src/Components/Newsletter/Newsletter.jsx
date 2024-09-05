@@ -32,7 +32,7 @@ const Newsletter = () => {
             <div className="container-fluid newsletter bg-primary py-5 my-5">
                 <div className="container py-5">
                     <div className="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style={{ maxWidth: "600px" }}>
-                        <h1 className="text-white mb-3"><span className="fw-light text-dark">Let's Subscribe</span> The Newsletter</h1>
+                        <h1 className="text-white mb-3"><span className="fw-light">Let's Subscribe</span> The Newsletter</h1>
                         <p className="text-white mb-4">Subscribe now to get 30% discount on any of our products</p>
                     </div>
 

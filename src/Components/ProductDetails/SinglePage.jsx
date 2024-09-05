@@ -6,47 +6,31 @@ import toast from 'react-hot-toast';
 import Product from '../Product/Product';
 
 const SinglePage = () => {
-  const navigate = useNavigate()
-  const [singleData, setSingleData] = useState({})
-  const [backendImages, setBackendImages] = useState([])
-  const { _id } = useParams()
+  const navigate = useNavigate();
+  const [singleData, setSingleData] = useState({});
+  const [backendImages, setBackendImages] = useState([]);
+  const { _id } = useParams();
   const [qty, setQty] = useState(1);
-  const [activeSize, setActiveSize] = useState(null);
-  const [activeSizePrice, setActiveSizePrice] = useState(null);
-  const [activeSizeDiscount, setActiveSizeDiscount] = useState(null);
-  const [activeSizeFinalPrice, setActiveSizeFinalPrice] = useState(null);
-  const [activeSizeStock, setActiveSizeStock] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const loginvalue = sessionStorage.getItem("login");
 
-  const handleSize = (productSize) => {
-    setActiveSize(productSize.sizeML);
-    setActiveSizePrice(productSize.price);
-    setActiveSizeDiscount(productSize.discountPrice);
-    setActiveSizeFinalPrice(productSize.finalPrice);
+  const getsingleProductData = async () => {
+    try {
+      let res = await axios.get(`http://localhost:8000/api/products/${_id}`);
+      console.log(res);
+      setSingleData(res.data.data);
+      // Assuming productImage is an array containing image URLs
+      if (res.data.data.productImage && Array.isArray(res.data.data.productImage)) {
+        setBackendImages(res.data.data.productImage);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-   const getsingleProductData = async () => {
-    try {
-        let res = await axios.get("//product/" + _id);
-        console.log(res);
-        setSingleData(res.data.data);
-        const imageKeys = Object.keys(res.data.data).filter(key => key.startsWith('productImage'));
-        const images = imageKeys.map(key => res.data.data[key]);
-        setBackendImages(images);
-        if (res.data.data.productSize && res.data.data.productSize.length > 0) {
-            handleSize(res.data.data.productSize[0]);
-        }
-    } catch (error) {
-        console.log(error);
-    }
-}
-  const localImages = [];
-  const images = backendImages.length > 0 ? backendImages : localImages;
-
   useEffect(() => {
-    getsingleProductData()
+    getsingleProductData();
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -54,11 +38,11 @@ const SinglePage = () => {
   }, []);
 
   const handlePrevClick = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? backendImages.length - 1 : prevIndex - 1));
   };
 
   const handleNextClick = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+    setCurrentImageIndex((prevIndex) => (prevIndex === backendImages.length - 1 ? 0 : prevIndex + 1));
   };
 
   const handleThumbnailClick = (index) => {
@@ -67,30 +51,24 @@ const SinglePage = () => {
 
   const addToCart = async () => {
     try {
-      if (activeSize && activeSizePrice) {
-        const newItem = {
-          userid: sessionStorage.getItem("userid"),
-          productid: singleData._id,
-          productname: singleData.productName,
-          quantity: qty,
-          sizeML: activeSize,
-          price: activeSizeFinalPrice,
-          image: singleData.productImage1
-        };
-        if (newItem.quantity > 0 && loginvalue === "true") {
-          let res = await axios.post('//cart', newItem);
-          if (res.status === 200) {
-            toast.success("Product Added to cart");
-            navigate("/cart");
-          }
-        } else {
-          toast.error("Please login then you can add the product to the cart");
-          setTimeout(() => {
-            navigate("/login");
-          }, 1000);
+      const newItem = {
+        userid: sessionStorage.getItem("userid"),
+        productid: singleData._id,
+        productname: singleData.productName,
+        quantity: qty,
+        image: backendImages[0], // Use the first image in the array for cart
+      };
+      if (newItem.quantity > 0 && loginvalue === "true") {
+        let res = await axios.post('//cart', newItem);
+        if (res.status === 200) {
+          toast.success("Product Added to cart");
+          navigate("/cart");
         }
       } else {
-        console.error('Please select a size.');
+        toast.error("Please login then you can add the product to the cart");
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
       }
     } catch (error) {
       console.error('Error adding item to cart:', error);
@@ -104,7 +82,7 @@ const SinglePage = () => {
           <div className="product-image-column">
             <div className="image-carousel">
               <div className="carousel-slides">
-                {images.map((image, index) => (
+                {backendImages.map((image, index) => (
                   <div
                     className={`carousel-slide ${index === currentImageIndex ? 'active' : ''}`}
                     key={index}
@@ -121,7 +99,7 @@ const SinglePage = () => {
               </button>
             </div>
             <div className="thumbnail-gallery">
-              {images.map((image, index) => (
+              {backendImages.map((image, index) => (
                 <img
                   src={image}
                   className={`thumbnail-image ${index === currentImageIndex ? 'active' : ''}`}
@@ -133,10 +111,8 @@ const SinglePage = () => {
             </div>
           </div>
           <div className="product-info-column">
-            <p className="product-title">{singleData.categoryName}</p>
-            <p className="product-description">{singleData.productName}
-            <p className="product-description">{singleData.productSubDescription}</p>
-            </p>
+            <p className="product-title">{singleData.productCategory}</p>
+            <p className="product-description">{singleData.productName}</p>
             <div className="rating">
               <i className="fa fa-star rating-icon"></i>
               <i className="fa fa-star rating-icon"></i>
@@ -146,31 +122,25 @@ const SinglePage = () => {
               <p className="rating-count">(1210)</p>
             </div>
             <div className="size-options">
-              {singleData.productSize ? (
-                singleData.productSize.map((item, index) => (
-                  <button
-                    className={`size-button ${activeSize === item.sizeML ? 'active' : ''}`}
-                    key={index}
-                    onClick={() => handleSize(item)}
-                  >
-                    Size: {item.sizeML} ML
-                  </button>
-                ))
-              ) : null}
+              {/* Add your size options here */}
             </div>
             <div className="price-info">
               <div>
-                <del className='original-price'>Rs.{activeSizePrice}</del>
+                <del className='original-price'>Rs.{singleData.productPrice}</del>
               </div>
               <div className='current-price'>
-                Rs.{activeSizeFinalPrice}
+                Rs.{singleData.productFinalPrice}
               </div>
               <div>
-                | Save {activeSizeDiscount} %
+                | Save {singleData.productDiscountPercentage} %
               </div>
             </div>
-            <p className="product-description">{singleData.productDescription}</p>
-            <p>{singleData.productDetails}</p>
+            <p><strong>Brand</strong> : {singleData.productBrand}</p>
+            <p><strong>Item Form</strong> : {singleData.productItem}</p>
+            <p><strong>Number of Items</strong> : {singleData.productItemNumberOf}</p>
+            <p><strong>Net Quantity</strong> : {singleData.productQuantity}</p>
+            <p>{singleData.productDescription}</p>
+            <p dangerouslySetInnerHTML={{ __html: singleData.productDetails }}></p>
             <div className="quantity-control">
               <button className="quantity-button" onClick={() => qty > 1 ? setQty(qty - 1) : ""}>-</button>
               <p className="quantity-display">{qty}</p>

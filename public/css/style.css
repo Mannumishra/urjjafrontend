@@ -98,7 +98,7 @@ img.animated.pulse {
 
 @media (max-width: 991.98px) {
     .navbar .navbar-nav {
-        padding: 0 15px;
+        padding: 14px 15px;
         background: var(--bs-primary);
     }
 

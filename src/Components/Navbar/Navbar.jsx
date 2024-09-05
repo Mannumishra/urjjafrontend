@@ -4,6 +4,7 @@ import add from '../../Images/user.png';
 import rem from '../../Images/check-out.png';
 import cart from '../../Images/online-shopping.png';
 import logo from '../../Images/ZENS logo TM CDR (1).png'
+import "./Navbar.css"
 
 const Navbar = () => {
   const [login, setLogin] = useState(false);
@@ -20,7 +21,7 @@ const Navbar = () => {
           <nav className="navbar navbar-expand-lg navbar-light p-0">
             <Link to="/" className="navbar-brand">
               {/* <h2 className="text-dark">URZAA</h2> */}
-              <img src={logo} alt="" style={{height:"50px"}}/>
+              <img src={logo} alt="" style={{height:"42px"}}/>
             </Link>
             <button
               type="button"
@@ -34,8 +35,8 @@ const Navbar = () => {
               <div className="navbar-nav ms-auto">
                 <Link to="/" className="nav-item nav-link active headertext-dark">Home</Link>
                 {/* <Link to="/about" className="nav-item nav-link">About</Link> */}
-                <Link to="/product" className="nav-item nav-link">Shop</Link>
-                <Link to="/shop" className="nav-item nav-link">Product</Link>
+                <Link to="/product" className="nav-item nav-link">Products</Link>
+                <Link to="/shop" className="nav-item nav-link">Shop</Link>
                 <Link to="/feature" className="nav-item nav-link">Features</Link>
                 {/* <Link to="/how_to_use" className="nav-item nav-link">How To Use</Link> */}
                 {/* <div className="nav-item dropdown">

@@ -118,16 +118,16 @@ color: orange;
 }
 
 .rating-icon {
-  font-size: 20px;
+  font-size: 13px;
 }
 
 .rating-icon-empty {
-  font-size: 20px;
+  font-size: 13px;
 }
 
 .rating-count {
-  font-size: 20px;
-  margin-top: -5px;
+  font-size: 13px;
+  /* margin-top: 5px; */
 }
 
 .size-options {
