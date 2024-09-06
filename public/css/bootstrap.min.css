@@ -7289,7 +7289,9 @@ fieldset:disabled .btn {
 .border {
     border: 3px solid #f4f8f1 !important
 }
-
+.borderbtncart {
+    border: 3px solid #E4005C !important
+}
 .border-0 {
     border: 0 !important
 }

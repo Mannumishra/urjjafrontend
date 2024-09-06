@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Singlepage.css';
 import axios from 'axios';
@@ -13,14 +14,12 @@ const SinglePage = () => {
   const [qty, setQty] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const loginvalue = sessionStorage.getItem("login");
 
   const getsingleProductData = async () => {
     try {
       let res = await axios.get(`http://localhost:8000/api/products/${_id}`);
       console.log(res);
       setSingleData(res.data.data);
-      // Assuming productImage is an array containing image URLs
       if (res.data.data.productImage && Array.isArray(res.data.data.productImage)) {
         setBackendImages(res.data.data.productImage);
       }
@@ -49,31 +48,49 @@ const SinglePage = () => {
     setCurrentImageIndex(index);
   };
 
-  const addToCart = async () => {
-    try {
-      const newItem = {
-        userid: sessionStorage.getItem("userid"),
-        productid: singleData._id,
-        productname: singleData.productName,
-        quantity: qty,
-        image: backendImages[0], // Use the first image in the array for cart
-      };
-      if (newItem.quantity > 0 && loginvalue === "true") {
-        let res = await axios.post('//cart', newItem);
-        if (res.status === 200) {
-          toast.success("Product Added to cart");
-          navigate("/cart");
-        }
-      } else {
-        toast.error("Please login then you can add the product to the cart");
-        setTimeout(() => {
-          navigate("/login");
-        }, 1000);
-      }
-    } catch (error) {
-      console.error('Error adding item to cart:', error);
+  const addToCart = () => {
+    const cartItem = {
+      id: singleData._id,
+      productname: singleData.productName,
+      productprice: singleData.productFinalPrice,
+      productquantity: qty,
+      productitem:singleData.productItem,
+      productnumberofitem:singleData.productItemNumberOf,
+      productimage: backendImages[0] 
+    };
+    const existingCart = JSON.parse(localStorage.getItem('zenscartItems')) || [];
+    const productIndex = existingCart.findIndex(item => item.id === cartItem.id);
+    if (productIndex >= 0) {
+      existingCart[productIndex].quantity += qty;
+    } else {
+      existingCart.push(cartItem);
     }
+  
+    localStorage.setItem('zenscartItems', JSON.stringify(existingCart));
+    toast.success('Product added to cart successfully!');
   };
+  
+  const handleBuyNow = () => {
+    const cartItem = {
+        id: singleData._id,
+        productname: singleData.productName,
+        productprice: singleData.productFinalPrice,
+        productquantity: qty,
+        productitem: singleData.productItem,
+        productnumberofitem: singleData.productItemNumberOf,
+        productimage: backendImages[0]
+    };
+    const existingCart = JSON.parse(localStorage.getItem('zenscartItemsBuynow')) || [];
+    const productIndex = existingCart.findIndex(item => item.id === cartItem.id);
+    if (productIndex >= 0) {
+        existingCart[productIndex].quantity += qty;
+    } else {
+        existingCart.push(cartItem);
+    }
+    localStorage.setItem('zenscartItemsBuynow', JSON.stringify(existingCart));
+    navigate('/checkout', { state: { source: 'buyNow' } });
+};
+
 
   return (
     <>
@@ -150,7 +167,7 @@ const SinglePage = () => {
               <button className="cart-button" onClick={addToCart}>
                 <i className="fa fa-shopping-bag"></i> Add to cart
               </button>
-              <button className="buy-now-button">
+              <button className="buy-now-button" onClick={handleBuyNow}>
                 <i className="fa fa-shopping-bag"></i> Buy Now
               </button>
             </div>
@@ -167,3 +184,4 @@ const SinglePage = () => {
 };
 
 export default SinglePage;
+

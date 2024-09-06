@@ -1,20 +1,30 @@
-import React, { useState } from 'react'
-import image1 from '../../Images/ZENS 2.2.jpg'
-import image2 from '../../Images/ZENS 2.3.jpg'
-import image3 from '../../Images/ZENS 2.2.q.jpg'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';  // To make API requests
 
 const HeroSection = () => {
-  const [banner] = useState([
-    { bannerImage: image1 },
-    { bannerImage: image2 },
-    { bannerImage: image3 }
-  ])
+  const [banners, setBanners] = useState([]);
+
+  // Fetch banners from API on component mount
+  useEffect(() => {
+    const fetchBanners = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/api/banner');
+        if (response.status === 200) {
+          const activeBanners = response.data.data.filter(banner => banner.active);
+          setBanners(activeBanners);
+        }
+      } catch (error) {
+        console.error('Error fetching banners:', error);
+      }
+    };
+    fetchBanners();
+  }, []);
 
   return (
     <>
       <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-indicators">
-          {banner.map((_, index) => (
+          {banners.map((_, index) => (
             <button
               key={index}
               type="button"
@@ -27,9 +37,9 @@ const HeroSection = () => {
           ))}
         </div>
         <div className="carousel-inner">
-          {banner.map((item, index) => (
+          {banners.map((item, index) => (
             <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-              <img src={item.bannerImage} className="d-block w-100" alt={`Slide ${index + 1}`} />
+              <img src={item.image} className="d-block w-100" alt={`Slide ${index + 1}`} />
             </div>
           ))}
         </div>
@@ -42,26 +52,8 @@ const HeroSection = () => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-      {/* <div class="container-fluid bg-primary hero-header mb-5">
-        <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6 text-center text-lg-start">
-                    <h3 class="fw-light text-white animated slideInRight">Natural & Organic</h3>
-                    <h1 class="display-4 text-white animated slideInRight">Hair <span class="fw-light text-dark">Shampoo</span> For Healthy Hair</h1>
-                    <p class="text-white mb-4 animated slideInRight">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit. Etiam feugiat rutrum lectus, sed auctor ex malesuada id. Orci varius natoque penatibus et
-                        magnis dis parturient montes.</p>
-                    <Link to="/product" class="btn btn-dark py-2 px-4 me-3 animated slideInRight">Shop Now</Link>
-                    <Link to="/contact" class="btn btn-outline-dark py-2 px-4 animated slideInRight">Contact Us</Link>
-                </div>
-                <div class="col-lg-6">
-                    <img class="img-fluid animated pulse infinite" src={image} alt="" />
-                </div>
-            </div>
-        </div>
-    </div> */}
     </>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;

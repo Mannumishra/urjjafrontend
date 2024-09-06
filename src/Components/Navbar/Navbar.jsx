@@ -49,11 +49,9 @@ const Navbar = () => {
                   </div>
                 </div> */}
                 <Link to="/contact" className="nav-item nav-link">Contact</Link>
-                {login ? (
                   <Link to="/cart">
                     <img src={cart} alt="Cart" style={{ height: 30 }} />
                   </Link>
-                ) : null}
                 &nbsp;&nbsp;&nbsp;
                 {login ? (
                   <Link to="/profile">
