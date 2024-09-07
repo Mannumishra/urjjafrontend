@@ -1,88 +1,132 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #e9ecef;
+} */
+
+.signup-container {
+  padding: 30px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+}
+
+.signup-form-wrapper {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 520px;
+  width: 100%;
+}
+
+.signup-form-wrapper h2 {
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 1px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #E4005C !important;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="file"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #f8f9fa;
+  transition: border-color 0.2s ease-in;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="file"]:focus {
+  border-color: #80bdff;
+  outline: none;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #E4005C !important;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #138496;
+}
+
+.login-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.error-text {
+  color: #dc3545;
+  font-size: 12px;
+}
+
+@media (max-width: 480px) {
+  .signup-form-wrapper {
+    padding: 30px;
   }
-  
-  .signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1606788075760-4d02cddf2129?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTkzNjN8MHwxfGFsbHwxfHx8fHx8fHwxNjE2NTA5NzE1&ixlib=rb-1.2.1&q=80&w=1080');
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .signup-form {
-    background: rgba(255, 255, 255, 0.85);
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-  }
-  
-  .signup-form h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background: rgb(144, 188, 121);
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  button[type="submit"]:hover {
-    background: #6a11cb;
-  }
-  
-  .login-link {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .login-link a {
-    color: #2575fc;
-    text-decoration: none;
-  }
-  
-  .login-link a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 480px) {
-    .signup-form {
-      padding: 20px;
-    }
-  }
-  
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 50px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font-size: 22px;
+}

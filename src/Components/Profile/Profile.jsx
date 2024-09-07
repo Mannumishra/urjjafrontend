@@ -1,27 +1,26 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Profile.css'
+import './Profile.css';
 
 const Profile = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [order, setOrder] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 2;
 
     const logout = () => {
-        sessionStorage.clear()
-        window.location.reload()
-        window.location.href = "/login";
-        navigate("/login")
-    }
+        sessionStorage.clear();
+        window.location.reload();
+        navigate("/login");
+    };
+
     useEffect(() => {
         const getApiData = async () => {
             try {
-                let res = await axios.get("//user/" + sessionStorage.getItem("userid"));
+                let res = await axios.get("http://localhost:8000/api/user/" + sessionStorage.getItem("userid"));
                 setUser(res.data.data);
-                console.log(res)
             } catch (error) {
                 console.log(error);
             }
@@ -30,7 +29,7 @@ const Profile = () => {
         const getOrderData = async () => {
             try {
                 let res = await axios.get("//checkout/" + sessionStorage.getItem("userid"));
-                const newData = res.data.data
+                const newData = res.data.data;
                 setOrder(newData.reverse());
             } catch (error) {
                 console.log(error);
@@ -39,10 +38,7 @@ const Profile = () => {
 
         getApiData();
         getOrderData();
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-          })
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }, []);
 
     // Pagination logic
@@ -56,153 +52,79 @@ const Profile = () => {
     };
 
     return (
-        <>
-            <div className="container profileheight">
-                <div className="row profilepage">
-                    <div className="profilebox">
-                        {user.pic ? (
-                            <img src={user.pic} alt="" className='profileimage' height="400px" width="100%" />
-                        ) : (
-                            <img src="/img/noimage.png" alt="" height="425px" width="100%" />
-                        )}
-                    </div>
-                    <div className="profilebox">
-                        <table className='table table-bordered table-striped table-hover'>
-                            <tbody>
-                                <tr>
-                                    <th>Name</th>
-                                    <td>{user.name}</td>
-                                </tr>
-                                <tr>
-                                    <th>Email</th>
-                                    <td>{user.email}</td>
-                                </tr>
-                                <tr>
-                                    <th>Phone</th>
-                                    <td>{user.phone}</td>
-                                </tr>
-                                <tr>
-                                    <th>Address</th>
-                                    <td>{user.address}</td>
-                                </tr>
-                                <tr>
-                                    <th>PIN</th>
-                                    <td>{user.pin}</td>
-                                </tr>
-                                <tr>
-                                    <th>City</th>
-                                    <td>{user.city}</td>
-                                </tr>
-                                <tr>
-                                    <th>State</th>
-                                    <td>{user.state}</td>
-                                </tr>
-                                <tr>
-                                    <td colSpan={2}><Link to="/update-profile" className='btn btn-dark w-100'>Update</Link></td>
-                                </tr>
-                                <tr>
-                                    <td colSpan={2}><Link onClick={logout} className='btn btn-dark w-100'>Logout</Link></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <div className="profile-container">
+            <div className="profile-grid">
+                <div className="profile-card">
+                    {user.image ? (
+                        <img src={user.image} alt="Profile" className="profile-pic" />
+                    ) : (
+                        <img src="/img/noimage.png" alt="No Profile" className="profile-pic" />
+                    )}
+                    <h2>{user.name}</h2>
+                    <p>{user.email}</p>
+                    <p>{user.phone}</p>
+                    <Link to="/update-profile" className="btn btn-primary mb-1 w-50">Update Profile</Link><br />
+                    <Link to="/chnage-password" className="btn btn-primary mb-1 w-50">Chnage Password</Link> <br />
+                    <button onClick={logout} className="btn btn-danger w-50">Logout</button>
                 </div>
-                <div>
-                    <h5 className='bg-dark text-light my-5 py-2 text-center'>Order History Section</h5>
+
+                <div className="profile-info">
+                    <h3>User Information</h3>
+                    <table className="info-table">
+                        <tbody>
+                            <tr><th>Address</th><td>{user.address}</td></tr>
+                            <tr><th>PIN</th><td>{user.pin}</td></tr>
+                            <tr><th>City</th><td>{user.city}</td></tr>
+                            <tr><th>State</th><td>{user.state}</td></tr>
+                        </tbody>
+                    </table>
                 </div>
+            </div>
+
+            <div className="order-history-section">
+                <h3>Order History</h3>
                 {ordersToDisplay.length > 0 ? (
                     ordersToDisplay.map((item, index) => (
-                        <div key={index} className="row ordersection">
-                            <div className="col-md-4 col-sm-6 orderinfo">
-                                <div className="table-responsive">
-                                    <table className='table table-bordered'>
-                                        <tbody>
-                                            <tr>
-                                                <th>Order ID</th>
-                                                <td>{item._id}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Order Status</th>
-                                                <td>{item.orderstatus}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Payment Mode</th>
-                                                <td>{item.paymentmode}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Payment Status</th>
-                                                <td>{item.paymentstatus}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Total</th>
-                                                <td>&#8377;{item.total}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Date</th>
-                                                <td>{(new Date(item.createdAt)).toLocaleDateString()}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                        <div key={index} className="order-card">
+                            <div className="order-summary">
+                                <p><strong>Order ID:</strong> {item._id}</p>
+                                <p><strong>Status:</strong> {item.orderstatus}</p>
+                                <p><strong>Payment Mode:</strong> {item.paymentmode}</p>
+                                <p><strong>Total:</strong> ₹{item.total}</p>
+                                <p><strong>Date:</strong> {(new Date(item.createdAt)).toLocaleDateString()}</p>
                             </div>
-                            <div className="col-md-8 col-sm-6">
-                                <div className='table-responsive'>
-                                    <table className='table table-bordered'>
-                                        <thead>
-                                            <tr>
-                                                <th>Pic</th>
-                                                <th>Name</th>
-                                                <th>Size</th>
-                                                <th>Price</th>
-                                                <th>Qty</th>
-                                                <th>Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {item.products.map((product, idx) => (
-                                                <tr key={idx}>
-                                                    <td><a href={product.image} target='_blank'><img src={product.image} alt="" style={{ height: 70, width: 70 }} /></a></td>
-                                                    <td>{product.productname}</td>
-                                                    <td>{product.sizeML}ML</td>
-                                                    <td>&#8377;{product.price}</td>
-                                                    <td>{product.quantity}</td>
-                                                    <td>&#8377;{product.price * product.quantity}</td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div className="order-products">
+                                {item.products.map((product, idx) => (
+                                    <div key={idx} className="product-details">
+                                        <img src={product.image} alt={product.productname} />
+                                        <p>{product.productname}</p>
+                                        <p>{product.sizeML}ML</p>
+                                        <p>₹{product.price} x {product.quantity}</p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     ))
                 ) : (
-                    <div className='text-center'>
-                        <p>No Order History Found</p>
-                        <Link to='/'><button className='btn btn-primary text-light'>Shop Now</button></Link>
-                    </div>
-                )}
-                {/* Pagination */}
-                {totalPages > 1 && (
-                    <nav aria-label="Page navigation">
-                        <ul className="pagination justify-content-center">
-                            {[...Array(totalPages).keys()].map((pageNumber) => (
-                                <li
-                                    key={pageNumber}
-                                    className={`page-item ${currentPage === pageNumber + 1 ? 'active' : ''}`}
-                                >
-                                    <button
-                                        className="page-link"
-                                        onClick={() => handlePageChange(pageNumber + 1)}
-                                    >
-                                        {pageNumber + 1}
-                                    </button>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
+                    <p>No orders found.</p>
                 )}
             </div>
-        </>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+                <nav className="pagination-nav">
+                    <ul className="pagination-list">
+                        {[...Array(totalPages).keys()].map((pageNumber) => (
+                            <li key={pageNumber} className={`pagination-item ${currentPage === pageNumber + 1 ? 'active' : ''}`}>
+                                <button onClick={() => handlePageChange(pageNumber + 1)}>
+                                    {pageNumber + 1}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            )}
+        </div>
     );
 };
 

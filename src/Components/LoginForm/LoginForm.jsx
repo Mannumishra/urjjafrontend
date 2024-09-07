@@ -5,56 +5,88 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const LoginForm = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [data, setData] = useState({
         email: "",
         password: ""
-    })
+    });
+    const [showPassword, setShowPassword] = useState(false);
+
     const getInputData = (e) => {
-        const { name, value } = e.target
-        setData({ ...data, [name]: value })
-    }
+        const { name, value } = e.target;
+        setData({ ...data, [name]: value });
+    };
+
     const postData = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         try {
-            const res = await axios.post("//user/login", data)
-            if(res.status===200){
-                toast.success("Login Successfully")
-                sessionStorage.setItem("login" ,true)
-                sessionStorage.setItem("userid" ,res.data.data._id)
-                sessionStorage.setItem("name" ,res.data.data.name)
-                sessionStorage.setItem("email" ,res.data.data.email)
-                sessionStorage.setItem("phone" ,res.data.data.phone)
-                navigate("/")
-                window.location.reload()
+            const res = await axios.post("http://localhost:8000/api/user/login", data);
+            console.log(res)
+            if (res.status === 200) {
+                toast.success("Login Successfully");
+                sessionStorage.setItem("login", true);
+                sessionStorage.setItem("userid", res.data.data._id);
+                sessionStorage.setItem("name", res.data.data.name);
+                sessionStorage.setItem("email", res.data.data.email);
+                sessionStorage.setItem("phone", res.data.data.phone);
+                navigate("/");
+                window.location.reload();
             }
         } catch (error) {
-            toast.error(error.response.data.message)
+            toast.error(error.response.data.message);
         }
-    }
-    useEffect(()=>{
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(prevState => !prevState);
+    };
+
+    useEffect(() => {
         window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        })
-    },[])
+            top: 0,
+            behavior: "smooth"
+        });
+    }, []);
+
     return (
         <div className="login-container">
-            <div className="login-form">
-                <h2>Login</h2>
-                <form onSubmit={postData}>
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" required onChange={getInputData} />
+            <div className="login-form-wrapper">
+                <h2 className="login-heading">Login</h2>
+                <form onSubmit={postData} className="login-form">
+                    <div className="form-field">
+                        <label htmlFor="email" className="form-label">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            className="form-input"
+                            onChange={getInputData}
+                        />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" id="password" name="password" required onChange={getInputData} />
+                    <div className="form-field password-field">
+                        <label htmlFor="password" className="form-label">Password</label>
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            id="password"
+                            name="password"
+                            required
+                            className="form-input"
+                            onChange={getInputData}
+                        />
+                        <button
+                            type="button"
+                            className="password-toggle-btn"
+                            onClick={togglePasswordVisibility}
+                        >
+                            {showPassword ? <i className="ri-eye-off-line"></i> : <i className="ri-eye-line"></i>}
+                        </button>
                     </div>
-                    <button type="submit">Login</button>
+                    <button type="submit" className="submit-btn">Login</button>
+                    <p><Link to='/forget-password' className='mt-1'>Forget Password ?</Link></p>
                 </form>
-                <p className="signup-link">
-                    If you don't have an account, please <Link to="/signup">sign up</Link>.
+                <p className="signup-prompt">
+                    If you don't have an account, please <Link to="/signup" className="signup-link">sign up</Link>.
                 </p>
             </div>
         </div>
