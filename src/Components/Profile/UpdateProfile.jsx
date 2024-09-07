@@ -39,7 +39,7 @@ const UpdateProfile = () => {
             formData.append("state", data.state);
             formData.append("image", data.image);
             
-            let res = await axios.put(`http://localhost:8000/api/user/${sessionStorage.getItem("userid")}`, formData);
+            let res = await axios.put(`https://zens-bankend.onrender.com/api/user/${sessionStorage.getItem("userid")}`, formData);
             
             if (res.status === 200) {
                 toast.success("Profile updated successfully");
@@ -52,7 +52,7 @@ const UpdateProfile = () => {
 
     const getAPIData = async () => {
         try {
-            let res = await axios.get(`http://localhost:8000/api/user/${sessionStorage.getItem("userid")}`);
+            let res = await axios.get(`https://zens-bankend.onrender.com/api/user/${sessionStorage.getItem("userid")}`);
             setData(res.data.data);
         } catch (error) {
             console.error(error);

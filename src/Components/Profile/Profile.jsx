@@ -18,7 +18,7 @@ const Profile = () => {
     useEffect(() => {
         const getApiData = async () => {
             try {
-                let res = await axios.get("http://localhost:8000/api/user/" + sessionStorage.getItem("userid"));
+                let res = await axios.get("https://zens-bankend.onrender.com/api/user/" + sessionStorage.getItem("userid"));
                 setUser(res.data.data);
             } catch (error) {
                 console.log(error);

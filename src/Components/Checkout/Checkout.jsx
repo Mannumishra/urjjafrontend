@@ -51,7 +51,7 @@ const Checkout = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/api/checkout', formData);
+            const response = await axios.post('https://zens-bankend.onrender.com/api/checkout', formData);
             console.log(response);
             toast.success('Checkout completed successfully!');
             localStorage.removeItem(cartKey); // Remove the relevant cart items

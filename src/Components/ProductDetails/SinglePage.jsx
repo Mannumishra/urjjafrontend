@@ -17,7 +17,7 @@ const SinglePage = () => {
 
   const getsingleProductData = async () => {
     try {
-      let res = await axios.get(`http://localhost:8000/api/products/${_id}`);
+      let res = await axios.get(`https://zens-bankend.onrender.com/api/products/${_id}`);
       console.log(res);
       setSingleData(res.data.data);
       if (res.data.data.productImage && Array.isArray(res.data.data.productImage)) {
