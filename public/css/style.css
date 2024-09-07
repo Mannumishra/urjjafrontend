@@ -1,5 +1,6 @@
 /********** Template CSS **********/
 /*** Spinner ***/
+
 #spinner {
     opacity: 0;
     visibility: hidden;
@@ -102,7 +103,7 @@ img.animated.pulse {
         background: var(--bs-primary);
     }
 
-    .navbar .navbar-nav .nav-link  {
+    .navbar .navbar-nav .nav-link {
         margin-right: 0;
         padding: 10px 0;
     }
@@ -133,20 +134,20 @@ img.animated.pulse {
     flex-direction: column;
     background-color: var(--bs-light);
     padding: 10px;
-  }
-  
-  .mobile-nav-item {
+}
+
+.mobile-nav-item {
     padding: 10px;
     color: var(--bs-dark);
     text-align: center;
     text-decoration: none;
-  }
-  
-  .mobile-nav-item:hover {
+}
+
+.mobile-nav-item:hover {
     background-color: var(--bs-primary);
     color: var(--bs-white);
-  }
-  
+}
+
 
 /*** Hero Header ***/
 .hero-header {
