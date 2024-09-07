@@ -9,7 +9,7 @@
     background-color: #f8f9fa;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .update-profile-header {
@@ -43,7 +43,7 @@
 }
 
 .btn-primary {
-    background-color: #343a40;
+    /* background-color: #343a40; */
     color: #fff;
     border: none;
     padding: 12px 20px;
@@ -60,7 +60,7 @@
     .update-profile-container {
         padding: 10px;
     }
-    
+
     .update-profile-form-container {
         padding: 15px;
     }
@@ -68,7 +68,7 @@
     .form-group {
         margin-bottom: 10px;
     }
-    
+
     .form-input {
         padding: 10px;
     }

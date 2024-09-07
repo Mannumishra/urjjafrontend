@@ -30,7 +30,7 @@ const LoginForm = () => {
                 sessionStorage.setItem("email", res.data.data.email);
                 sessionStorage.setItem("phone", res.data.data.phone);
                 navigate("/");
-                window.location.reload();
+                // window.location.reload();
             }
         } catch (error) {
             toast.error(error.response.data.message);

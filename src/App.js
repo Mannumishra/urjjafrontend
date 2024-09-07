@@ -28,6 +28,7 @@ import Profile from './Components/Profile/Profile';
 import PaymentSuccess from './Components/Payment/PaymentSuccess';
 import Shop from './Components/Shop/Shop';
 import ForgetPassword from './Components/ForgetPassword/ForgetPassword';
+import ChangePassword from './Components/ChangePassword/ChangePassword';
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/Payment-Success' element={<PaymentSuccess />} />
           <Route path='/forget-password' element={<ForgetPassword />} />
+          <Route path='/chnage-password' element={<ChangePassword />} />
         </Routes>
         <Footer />
       </BrowserRouter>

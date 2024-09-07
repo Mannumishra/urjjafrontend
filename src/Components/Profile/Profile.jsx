@@ -12,7 +12,6 @@ const Profile = () => {
 
     const logout = () => {
         sessionStorage.clear();
-        window.location.reload();
         navigate("/login");
     };
 

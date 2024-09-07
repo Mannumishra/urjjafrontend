@@ -198,7 +198,7 @@ const Checkout = () => {
                             ))}
                         </tbody>
                     </table>
-                    <h4 className="total-price">Total Price: &#8377;{formData.totalPrice}</h4>
+                    <h6 className="total-price">Total Price: &#8377;{formData.totalPrice}</h6>
                 </div>
 
                 <button type="submit" className="submit-button" disabled={loading}>
