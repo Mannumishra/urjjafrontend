@@ -87,8 +87,9 @@ const Profile = () => {
                         <div key={index} className="order-card">
                             <div className="order-summary">
                                 <p><strong>Order ID:</strong> {item._id}</p>
-                                <p><strong>Status:</strong> {item.orderStatus}</p>
+                                <p><strong>Order Status:</strong> {item.orderStatus}</p>
                                 <p><strong>Payment Mode:</strong> {item.paymentMode}</p>
+                                <p><strong>Payment Status:</strong> {item.paymentStatus}</p>
                                 <p><strong>Total:</strong> ₹{item.totalPrice}</p>
                                 <p><strong>Date:</strong> {(new Date(item.createdAt)).toLocaleDateString()}</p>
                             </div>
