@@ -61,7 +61,7 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/Payment-Success' element={<PaymentSuccess />} />
           <Route path='/forget-password' element={<ForgetPassword />} />
-          <Route path='/chnage-password' element={<ChangePassword />} />
+          <Route path='/change-password' element={<ChangePassword />} />
         </Routes>
         <Footer />
       </BrowserRouter>
