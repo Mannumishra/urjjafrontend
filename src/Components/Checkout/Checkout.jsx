@@ -20,7 +20,7 @@ const Checkout = () => {
         transactionId: '',
         orderStatus: 'Order Is Placed',
         paymentMode: 'Online Payment',
-        paymentStatus: 'pending'
+        paymentStatus: 'Pending'
     });
 
     const [loading, setLoading] = useState(false);
@@ -80,7 +80,7 @@ const Checkout = () => {
             const response = await axios.post('http://localhost:8000/api/checkout', {
                 ...formData,
                 transactionId: paymentId,
-                paymentStatus: paymentId ? 'completed' : 'pending'
+                paymentStatus: paymentId ? 'completed' : 'Pending'
             });
             toast.success('Checkout completed successfully!');
             localStorage.removeItem(cartKey); // Remove the relevant cart items
@@ -97,10 +97,10 @@ const Checkout = () => {
         try {
             const response = await axios.post('http://localhost:8000/api/checkout', formData);
             const { razorpayOrderId, amount, currency } = response.data;
-    
+        
             // Convert amount to integer (paise)
-            const amountInPaise = Math.round(amount * 100);
-    
+            const amountInPaise = Math.round(amount);
+        
             const options = {
                 key: 'rzp_test_XPcfzOlm39oYi8', // Replace with your Razorpay key
                 amount: amountInPaise.toString(), // Ensure amount is a string representation of an integer
@@ -112,9 +112,21 @@ const Checkout = () => {
                     const paymentId = response.razorpay_payment_id;
                     const orderId = response.razorpay_order_id;
                     const signature = response.razorpay_signature;
-    
-                    // Proceed with final submission and backend verification
-                    submitOrder(paymentId);
+        
+                    try {
+                        // Call the backend to verify the payment
+                        await axios.post('http://localhost:8000/api/verify-payment', {
+                            razorpay_payment_id: paymentId,
+                            razorpay_order_id: orderId,
+                            razorpay_signature: signature,
+                        });
+                        toast.success('Payment successful!');
+                        localStorage.removeItem(cartKey); // Remove the relevant cart items
+                        navigate('/order-confirmation');
+                    } catch (error) {
+                        console.error('Payment verification error:', error);
+                        toast.error('Error verifying payment. Please try again.');
+                    }
                 },
                 prefill: {
                     name: formData.name,
@@ -125,7 +137,7 @@ const Checkout = () => {
                     color: '#3399cc',
                 },
             };
-    
+        
             const rzp = new window.Razorpay(options);
             rzp.open();
         } catch (error) {
@@ -133,6 +145,7 @@ const Checkout = () => {
             toast.error('Error initiating payment. Please try again.');
         }
     };
+    
     
 
 
