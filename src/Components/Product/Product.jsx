@@ -15,7 +15,7 @@ const Product = () => {
     // Fetch API data
     const getApiData = async () => {
         try {
-            const res = await axios.get("https://zens-bankend.onrender.com/api/products");
+            const res = await axios.get("http://localhost:8000/api/products");
             console.log(res);
             if (res.status === 200) {
                 setProducts(res.data.data);

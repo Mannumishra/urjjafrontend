@@ -13,11 +13,12 @@ const SinglePage = () => {
   const { _id } = useParams();
   const [qty, setQty] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const login = sessionStorage.getItem("login")
 
 
   const getsingleProductData = async () => {
     try {
-      let res = await axios.get(`https://zens-bankend.onrender.com/api/products/${_id}`);
+      let res = await axios.get(`http://localhost:8000/api/products/${_id}`);
       console.log(res);
       setSingleData(res.data.data);
       if (res.data.data.productImage && Array.isArray(res.data.data.productImage)) {
@@ -54,9 +55,9 @@ const SinglePage = () => {
       productname: singleData.productName,
       productprice: singleData.productFinalPrice,
       productquantity: qty,
-      productitem:singleData.productItem,
-      productnumberofitem:singleData.productItemNumberOf,
-      productimage: backendImages[0] 
+      productitem: singleData.productItem,
+      productnumberofitem: singleData.productItemNumberOf,
+      productimage: backendImages[0]
     };
     const existingCart = JSON.parse(localStorage.getItem('zenscartItems')) || [];
     const productIndex = existingCart.findIndex(item => item.id === cartItem.id);
@@ -65,31 +66,37 @@ const SinglePage = () => {
     } else {
       existingCart.push(cartItem);
     }
-  
+
     localStorage.setItem('zenscartItems', JSON.stringify(existingCart));
     toast.success('Product added to cart successfully!');
   };
-  
+
   const handleBuyNow = () => {
     const cartItem = {
-        id: singleData._id,
-        productname: singleData.productName,
-        productprice: singleData.productFinalPrice,
-        productquantity: qty,
-        productitem: singleData.productItem,
-        productnumberofitem: singleData.productItemNumberOf,
-        productimage: backendImages[0]
+      id: singleData._id,
+      productname: singleData.productName,
+      productprice: singleData.productFinalPrice,
+      productquantity: qty,
+      productitem: singleData.productItem,
+      productnumberofitem: singleData.productItemNumberOf,
+      productimage: backendImages[0]
     };
     const existingCart = JSON.parse(localStorage.getItem('zenscartItemsBuynow')) || [];
     const productIndex = existingCart.findIndex(item => item.id === cartItem.id);
     if (productIndex >= 0) {
-        existingCart[productIndex].quantity += qty;
+      existingCart[productIndex].quantity += qty;
     } else {
-        existingCart.push(cartItem);
+      existingCart.push(cartItem);
     }
     localStorage.setItem('zenscartItemsBuynow', JSON.stringify(existingCart));
-    navigate('/checkout', { state: { source: 'buyNow' } });
-};
+    // Check if the user is logged in
+    if (login) {
+      navigate('/checkout', { state: { source: 'buyNow' } });
+    } else {
+      // Redirect to login page if not logged in
+      navigate('/login', { state: { fromBuyNow: true } });
+    }
+  };
 
 
   return (

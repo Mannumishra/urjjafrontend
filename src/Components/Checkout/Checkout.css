@@ -1,11 +1,19 @@
 /* General styles */
+.checkout-section{
+  display: flex;
+  padding: 20px;
+}
 .checkout-wrapper {
-    max-width: 900px;
+    width: 48%;
     margin: 20px auto;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
+  }
+
+  .summary-wrapper{
+    width: 48%;
   }
   
   .checkout-title {

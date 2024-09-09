@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './LoginForm.css';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const LoginForm = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [data, setData] = useState({
         email: "",
         password: ""
@@ -20,7 +21,7 @@ const LoginForm = () => {
     const postData = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("https://zens-bankend.onrender.com/api/user/login", data);
+            const res = await axios.post("http://localhost:8000/api/user/login", data);
             console.log(res)
             if (res.status === 200) {
                 toast.success("Login Successfully");
@@ -29,8 +30,15 @@ const LoginForm = () => {
                 sessionStorage.setItem("name", res.data.data.name);
                 sessionStorage.setItem("email", res.data.data.email);
                 sessionStorage.setItem("phone", res.data.data.phone);
-                navigate("/");
-                // window.location.reload();
+                // Check if user came from the cart page
+                if (location.state?.fromCart) {
+                    navigate("/checkout");
+                }
+                else if (location.state?.fromBuyNow) {
+                    navigate("/checkout");
+                } else {
+                    navigate("/");
+                }
             }
         } catch (error) {
             toast.error(error.response.data.message);

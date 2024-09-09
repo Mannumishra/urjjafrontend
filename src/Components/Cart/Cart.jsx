@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const [data, setData] = useState([]); // State for cart data
+  const login = sessionStorage.getItem("login")
 
   // Fetching cart data from localStorage
   const getCartdata = () => {
@@ -136,7 +137,7 @@ const Cart = () => {
             <div className="col-sm-8 col-md-7 col-lg-6 col-xl-4">
               <div className="bg-light rounded p-3">
                 <h4 className="text-dark">Total Price: &#8377;{calculateTotalPrice()}</h4>
-                <Link to="/checkout" className="btn btn-dark border-primary w-100 text-light text-uppercase" type="button">
+                <Link to={login ? "/checkout" : "/login"}  state={{ fromCart: "/cart" }} className="btn btn-dark border-primary w-100 text-light text-uppercase" type="button">
                   Proceed to Checkout
                 </Link>
               </div>

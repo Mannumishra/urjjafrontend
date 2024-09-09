@@ -17,7 +17,7 @@ const ChangePassword = () => {
                 setError('New passwords do not match');
                 return;
             }
-            const res = await axios.post("https://zens-bankend.onrender.com/api/user/chnage-password", { email: email, currentPassword: currentPassword, newPassword: newPassword })
+            const res = await axios.post("http://localhost:8000/api/user/chnage-password", { email: email, currentPassword: currentPassword, newPassword: newPassword })
             console.log(res)
             setSuccess('Password changed successfully');
             setError('');

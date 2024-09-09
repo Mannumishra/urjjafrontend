@@ -18,7 +18,7 @@ const Profile = () => {
     useEffect(() => {
         const getApiData = async () => {
             try {
-                let res = await axios.get("https://zens-bankend.onrender.com/api/user/" + sessionStorage.getItem("userid"));
+                let res = await axios.get("http://localhost:8000/api/user/" + sessionStorage.getItem("userid"));
                 setUser(res.data.data);
             } catch (error) {
                 console.log(error);
@@ -27,7 +27,7 @@ const Profile = () => {
 
         const getOrderData = async () => {
             try {
-                let res = await axios.get("//checkout/" + sessionStorage.getItem("userid"));
+                let res = await axios.get("http://localhost:8000/api/checkout/user/" + sessionStorage.getItem("userid"));
                 const newData = res.data.data;
                 setOrder(newData.reverse());
             } catch (error) {
@@ -63,7 +63,7 @@ const Profile = () => {
                     <p>{user.email}</p>
                     <p>{user.phone}</p>
                     <Link to="/update-profile" className="btn btn-primary mb-1 w-50">Update Profile</Link><br />
-                    <Link to="/chnage-password" className="btn btn-primary mb-1 w-50">Chnage Password</Link> <br />
+                    <Link to="/change-password" className="btn btn-primary mb-1 w-50">Change Password</Link><br />
                     <button onClick={logout} className="btn btn-danger w-50">Logout</button>
                 </div>
 
@@ -87,20 +87,24 @@ const Profile = () => {
                         <div key={index} className="order-card">
                             <div className="order-summary">
                                 <p><strong>Order ID:</strong> {item._id}</p>
-                                <p><strong>Status:</strong> {item.orderstatus}</p>
-                                <p><strong>Payment Mode:</strong> {item.paymentmode}</p>
-                                <p><strong>Total:</strong> ₹{item.total}</p>
+                                <p><strong>Status:</strong> {item.orderStatus}</p>
+                                <p><strong>Payment Mode:</strong> {item.paymentMode}</p>
+                                <p><strong>Total:</strong> ₹{item.totalPrice}</p>
                                 <p><strong>Date:</strong> {(new Date(item.createdAt)).toLocaleDateString()}</p>
                             </div>
                             <div className="order-products">
-                                {item.products.map((product, idx) => (
-                                    <div key={idx} className="product-details">
-                                        <img src={product.image} alt={product.productname} />
-                                        <p>{product.productname}</p>
-                                        <p>{product.sizeML}ML</p>
-                                        <p>₹{product.price} x {product.quantity}</p>
-                                    </div>
-                                ))}
+                                {item.cartItems && item.cartItems.length > 0 ? (
+                                    item.cartItems.map((product, idx) => (
+                                        <div key={idx} className="product-details">
+                                            <img src={product.productimage} alt={product.productname} />
+                                            <p>{product.productname}</p>
+                                            <p>{product.productnumberofitem} items</p>
+                                            <p>₹{product.productprice} x {product.productquantity}</p>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p>No products found in this order.</p>
+                                )}
                             </div>
                         </div>
                     ))
