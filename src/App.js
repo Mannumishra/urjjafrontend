@@ -29,6 +29,7 @@ import PaymentSuccess from './Components/Payment/PaymentSuccess';
 import Shop from './Components/Shop/Shop';
 import ForgetPassword from './Components/ForgetPassword/ForgetPassword';
 import ChangePassword from './Components/ChangePassword/ChangePassword';
+import OrderConfirmation from './Components/OrderConfirmation/OrderConfirmation';
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/product' element={<Product />} />
-          <Route path='/shop' element={<Shop  />} />
+          <Route path='/shop' element={<Shop />} />
           <Route path='/details/:_id' element={<SinglePage />} />
           <Route path='/feature' element={<Feauture />} />
           <Route path='/how_to_use' element={<HowToUse />} />
@@ -62,6 +63,7 @@ function App() {
           <Route path='/Payment-Success' element={<PaymentSuccess />} />
           <Route path='/forget-password' element={<ForgetPassword />} />
           <Route path='/change-password' element={<ChangePassword />} />
+          <Route path='/order-confirmation' element={<OrderConfirmation />} />
         </Routes>
         <Footer />
       </BrowserRouter>

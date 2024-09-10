@@ -21,7 +21,7 @@ const LoginForm = () => {
     const postData = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:8000/api/user/login", data);
+            const res = await axios.post("https://zens-bankend.onrender.com/api/user/login", data);
             console.log(res)
             if (res.status === 200) {
                 toast.success("Login Successfully");

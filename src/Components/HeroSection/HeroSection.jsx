@@ -8,7 +8,7 @@ const HeroSection = () => {
   useEffect(() => {
     const fetchBanners = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/banner');
+        const response = await axios.get('https://zens-bankend.onrender.com/api/banner');
         if (response.status === 200) {
           const activeBanners = response.data.data.filter(banner => banner.active);
           setBanners(activeBanners);

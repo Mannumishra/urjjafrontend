@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <>
       {/* <!-- Navbar Start --> */}
-      <div className="container-fluid sticky-top">
+      <div className="container-fluid sticky-top" style={{ backgroundColor: "#D10054" }}>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light p-0">
             <Link to="/" className="navbar-brand">
@@ -49,14 +49,14 @@ const Navbar = () => {
                 <Link to="/cart" onClick={handleLinkClick}>
                   <img src={cart} alt="Cart" style={{ height: 30 }} />
                 </Link>
-                &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                 {login ? (
                   <Link to="/profile" onClick={handleLinkClick}>
-                    <img src={add} alt="Profile" style={{ height: 30 }} />
+                    <img src={add} alt="Profile" style={{ height: 30 }} /> <sup>2</sup>
                   </Link>
                 ) : (
-                  <Link to="/signup" onClick={handleLinkClick}>
-                    <img src={add} alt="Sign Up" style={{ height: 30 }} />
+                  <Link to="/login" onClick={handleLinkClick} >
+                    <img src={add} alt="Sign Up" style={{ height: 30 ,color:"white" }} />
                   </Link>
                 )}
               </div>

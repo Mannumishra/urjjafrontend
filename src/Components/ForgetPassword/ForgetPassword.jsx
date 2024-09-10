@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './ForgetPassword.css'; // Updated CSS file
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const ForgetPassword = () => {
     const [step, setStep] = useState(1); // Step 1: Enter email, Step 2: Enter OTP, Step 3: Reset Password
@@ -10,13 +11,14 @@ const ForgetPassword = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate()
 
     // Function to handle sending OTP
     const handleSendOtp = async (e) => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/api/forget-password/send-otp', { email });
+            const response = await axios.post('https://zens-bankend.onrender.com/api/forget-password/send-otp', { email });
             console.log(response);
             toast.success(response.data.message);
             setStep(2); // Move to OTP step
@@ -32,7 +34,7 @@ const ForgetPassword = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/api/forget-password/verify-otp', { email, otp });
+            const response = await axios.post('https://zens-bankend.onrender.com/api/forget-password/verify-otp', { email, otp });
             toast.success(response.data.message);
             setStep(3); // Move to Reset Password step
         } catch (error) {
@@ -51,8 +53,9 @@ const ForgetPassword = () => {
         }
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/api/forget-password/reset-password', { email, password });
+            const response = await axios.post('https://zens-bankend.onrender.com/api/forget-password/reset-password', { email, password });
             toast.success(response.data.message);
+            navigate("/login")
         } catch (error) {
             toast.error(error.response?.data?.message || 'Error resetting password');
         }

@@ -70,12 +70,14 @@ img.animated.pulse {
 }
 
 .navbar {
-    padding: 8px 22px !important;
+    padding: 8px 0px !important;
     height: 65px;
 }
 
 .navbar .navbar-nav .nav-link {
-    margin-right: 45px;
+    margin-right: 55px;
+    color: white !important;
+    font-size: 20px;
     padding: 0;
     color: var(--bs-dark);
     font-weight: 500;
@@ -139,6 +141,7 @@ img.animated.pulse {
 .mobile-nav-item {
     padding: 10px;
     color: var(--bs-dark);
+    color: white;
     text-align: center;
     text-decoration: none;
 }

@@ -41,7 +41,7 @@ const SignUpForm = () => {
                 formData.append("password", data.password);
                 formData.append("image", data.image); // File needs to be sent as FormData
 
-                const res = await axios.post("http://localhost:8000/api/user", formData, {
+                const res = await axios.post("https://zens-bankend.onrender.com/api/user", formData, {
                     headers: {
                         "Content-Type": "multipart/form-data"
                     }
