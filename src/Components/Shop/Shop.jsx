@@ -72,7 +72,8 @@ const Shop = () => {
                     <div className="row g-4">
                         {filterdata.slice(0, visibleProducts).map((item, index) => (
                             <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s" key={index}>
-                                <div className="product-item text-center border h-100 p-4">
+                              <Link to={`/details/${item._id}`}>
+                              <div className="product-item text-center border h-100 p-4">
                                     <img className="img-fluid mb-4" src={item.productImage[0]} alt={item.productName} />
                                     <a href="" className="h6 d-inline-block mb-2">{item.productName}</a>
                                     <div className="mb-2">
@@ -87,6 +88,7 @@ const Shop = () => {
                                     <h5 className="text-primary mb-3">&#8377; {item.productFinalPrice} &nbsp; <span><del className='text-danger'>&#8377; {item.productPrice}</del></span></h5>
                                     <Link to={`/details/${item._id}`} className="btn btn-outline-primary px-3">See Details</Link>
                                 </div>
+                              </Link>
                             </div>
                         ))}
                         {hasMore && (
@@ -100,6 +102,7 @@ const Shop = () => {
                     </div>
                 </div>
             </div>
+            <hr />
         </>
     );
 };

@@ -44,9 +44,7 @@ const Product = () => {
     }, []);
 
     // Filter products based on category
-    const filterData = category === 'All'
-        ? products
-        : products.filter((item) => item.category === category);
+    const filterData = category === 'All' ? products : products.filter((item) => item.category === category);
 
     // Handle load more products
     const loadMoreProducts = () => {
@@ -156,6 +154,7 @@ const Product = () => {
                     </div>
                 </div>
             </div>
+            <hr />
         </>
     );
 };

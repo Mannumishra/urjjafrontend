@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react'
 import Newsletter from '../Newsletter/Newsletter'
+import image1 from "./blog1.jpg"
+import image2 from "./blog2.jpg"
+import image3 from"./blog3.jpg"
 
 const Blog = () => {
     const location = window.location.pathname
@@ -40,8 +43,8 @@ const Blog = () => {
         <div class="row g-4">
             <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
                 <div class="blog-item border h-100 p-4">
-                    <img class="img-fluid mb-4" src="img/blog-1.jpg" alt=""/>
-                    <a href="" class="h5 lh-base d-inline-block">Natural Remedies for Common Ailments</a>
+                    <img class="img-fluid mb-4" src={image1} alt=""/>
+                    <a href="" class="h5 lh-base d-inline-block">Innovative Solutions for Global Health Challenges</a>
                     <div class="d-flex text-black-50 mb-2">
                         <div class="pe-3">
                             <small class="fa fa-eye me-1"></small>
@@ -52,14 +55,14 @@ const Blog = () => {
                             <small>9999 Comments</small>
                         </div>
                     </div>
-                    <p class="mb-4">Discover effective natural remedies for common ailments such as colds, headaches, and digestive issues. Learn how ingredients like ginger, turmeric, and peppermint can help alleviate symptoms and promote overall health without the side effects of conventional medications.</p>
+                    <p class="mb-4">Discover how Zens Health Care is developing innovative pharmaceutical solutions to tackle global health issues, offering new hope to patients worldwide with cutting-edge therapies and medications.</p>
                     <a href="" class="btn btn-outline-primary px-3">Read More</a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                 <div class="blog-item border h-100 p-4">
-                    <img class="img-fluid mb-4" src="img/blog-2.jpg" alt=""/>
-                    <a href="" class="h5 lh-base d-inline-block">The Importance of Preventive Healthcare</a>
+                    <img class="img-fluid mb-4" src={image2} alt=""/>
+                    <a href="" class="h5 lh-base d-inline-block">The Importance of Preventive Medicine in Modern Healthcare</a>
                     <div class="d-flex text-black-50 mb-2">
                         <div class="pe-3">
                             <small class="fa fa-eye me-1"></small>
@@ -70,14 +73,14 @@ const Blog = () => {
                             <small>9999 Comments</small>
                         </div>
                     </div>
-                    <p class="mb-4">Preventive healthcare is crucial for maintaining long-term health. Regular check-ups, vaccinations, and healthy lifestyle choices can help prevent diseases before they start. Learn more about the steps you can take to stay healthy and avoid chronic illnesses.</p>
+                    <p class="mb-4">Preventive medicine plays a critical role in maintaining long-term health. Learn how regular health check-ups, vaccinations, and lifestyle choices contribute to disease prevention and better well-being.</p>
                     <a href="" class="btn btn-outline-primary px-3">Read More</a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
                 <div class="blog-item border h-100 p-4">
-                    <img class="img-fluid mb-4" src="img/blog-3.jpg" alt=""/>
-                    <a href="" class="h5 lh-base d-inline-block">How to Use Our Natural & Organic Remedies</a>
+                    <img class="img-fluid mb-4" src={image3} alt=""/>
+                    <a href="" class="h5 lh-base d-inline-block">Maximizing the Benefits of Our Medications</a>
                     <div class="d-flex text-black-50 mb-2">
                         <div class="pe-3">
                             <small class="fa fa-eye me-1"></small>
@@ -88,7 +91,7 @@ const Blog = () => {
                             <small>9999 Comments</small>
                         </div>
                     </div>
-                    <p class="mb-4">Learn how to effectively use our natural and organic remedies to improve your health. From herbal teas to essential oils, our guide provides detailed instructions on how to integrate these products into your daily routine for maximum benefit.</p>
+                    <p class="mb-4">Find out how to get the most out of Zens Health Care’s pharmaceutical products. From proper dosage to understanding potential interactions, this guide helps you use our medications safely and effectively.</p>
                     <a href="" class="btn btn-outline-primary px-3">Read More</a>
                 </div>
             </div>

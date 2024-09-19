@@ -10,9 +10,10 @@ const Footer = () => {
                     <div className="row g-5">
                         <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                             <a href="index.html" className="d-inline-block mb-3">
-                                <h1 className="text-primary">URJAA</h1>
+                                <h1 className="text-primary">ZENS</h1>
                             </a>
-                            <p className="mb-0">Welcome to URJAA! Explore our range of premium herbal medicines, tonics, and health supplements designed to support your wellness journey. Quality you can trust, delivered to your door.</p>
+                            <p className="mb-0">Welcome to Zens Health Care!
+                                A leader in pharmaceutical innovation dedicated to improving global health and well-being. We are committed to delivering high-quality, effective, and accessible medications to patients worldwide.</p>
                         </div>
                         <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
                             <h5 className="mb-4">Get In Touch</h5>
@@ -27,12 +28,12 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                            <h5 className="mb-4">Our Products</h5>
-                            <a className="btn btn-link" href="">Pain Relief Balm</a>
-                            <a className="btn btn-link" href="">Herbal Cough Syrup</a>
-                            <a className="btn btn-link" href="">Natural Digestive Aid</a>
-                            <a className="btn btn-link" href="">Immune Boosting Tonic</a>
-                            <a className="btn btn-link" href="">Herbal Sleep Aid</a>
+                            <h5 className="mb-4">Our Category</h5>
+                            <Link className="btn btn-link" to="/product">Facewash</Link>
+                            <Link className="btn btn-link" to="/product">Homeopathy</Link>
+                            <Link className="btn btn-link" to="/product">Anti Biotic Range</Link>
+                            <Link className="btn btn-link" to="/product">Proton Pump Inhibitor Range</Link>
+                            {/* <a className="btn btn-link" href="">Herbal Sleep Aid</a> */}
                         </div>
                         <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                             <h5 className="mb-4">Popular Link</h5>

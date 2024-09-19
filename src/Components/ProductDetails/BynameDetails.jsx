@@ -183,9 +183,9 @@ const BynameDetails = () => {
             </div>
 
             <hr />
-            <div>
+            {/* <div>
                 <Product />
-            </div>
+            </div> */}
         </>
     );
 };

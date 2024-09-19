@@ -124,9 +124,9 @@ const Feauture = () => {
                                         <i class="fa fa-check fa-2x text-primary"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h5>No Side Effects</h5>
+                                        <h5>Trusted by Professionals</h5>
                                         <hr class="w-25 bg-primary my-2" />
-                                        <span>Our formula ensures no side effects, providing safe and gentle care.</span>
+                                        <span>Our products are recommended by healthcare professionals for their proven efficacy.</span>
                                     </div>
                                 </div>
                                 <div class="col-12 d-flex">
@@ -135,9 +135,9 @@ const Feauture = () => {
                                         <i class="fa fa-check fa-2x text-primary"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h5>No Allergens</h5>
+                                        <h5>Clinically Tested</h5>
                                         <hr class="w-25 bg-primary my-2" />
-                                        <span>Our product is designed to be free from allergens, ensuring safe use for all.</span>
+                                        <span>Our medications undergo rigorous clinical testing to ensure safety and effectiveness.</span>
                                     </div>
                                 </div>
                                 <div class="col-12 d-flex">
@@ -146,9 +146,9 @@ const Feauture = () => {
                                         <i class="fa fa-check fa-2x text-primary"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h5>Natural Ingredients</h5>
+                                        <h5>Advanced Formulations</h5>
                                         <hr class="w-25 bg-primary my-2" />
-                                        <span>Our product features natural ingredients, providing a pure and effective solution.</span>
+                                        <span>We use cutting-edge technology and research to create advanced pharmaceutical formulations.</span>
                                     </div>
                                 </div>
                             </div>
