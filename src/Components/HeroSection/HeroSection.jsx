@@ -8,7 +8,7 @@ const HeroSection = () => {
   useEffect(() => {
     const fetchBanners = async () => {
       try {
-        const response = await axios.get('https://zens-bankend.onrender.com/api/banner');
+        const response = await axios.get('http://localhost:8000/api/banner');
         if (response.status === 200) {
           const activeBanners = response.data.data.filter(banner => banner.active);
           setBanners(activeBanners);
@@ -39,7 +39,10 @@ const HeroSection = () => {
         <div className="carousel-inner">
           {banners.map((item, index) => (
             <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-              <img src={item.image} className="d-block w-100" alt={`Slide ${index + 1}`} />
+              {/* Make the image clickable by wrapping it with an <a> tag */}
+              <a href={`/details/name/${item.name}`}>
+                <img src={item.image} className="d-block w-100" alt={`Slide ${index + 1}`} />
+              </a>
             </div>
           ))}
         </div>

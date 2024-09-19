@@ -18,7 +18,7 @@ const ForgetPassword = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post('https://zens-bankend.onrender.com/api/forget-password/send-otp', { email });
+            const response = await axios.post('http://localhost:8000/api/forget-password/send-otp', { email });
             console.log(response);
             toast.success(response.data.message);
             setStep(2); // Move to OTP step
@@ -34,7 +34,7 @@ const ForgetPassword = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post('https://zens-bankend.onrender.com/api/forget-password/verify-otp', { email, otp });
+            const response = await axios.post('http://localhost:8000/api/forget-password/verify-otp', { email, otp });
             toast.success(response.data.message);
             setStep(3); // Move to Reset Password step
         } catch (error) {
@@ -53,7 +53,7 @@ const ForgetPassword = () => {
         }
         setLoading(true);
         try {
-            const response = await axios.post('https://zens-bankend.onrender.com/api/forget-password/reset-password', { email, password });
+            const response = await axios.post('http://localhost:8000/api/forget-password/reset-password', { email, password });
             toast.success(response.data.message);
             navigate("/login")
         } catch (error) {

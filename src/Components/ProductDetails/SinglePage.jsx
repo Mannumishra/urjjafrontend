@@ -18,7 +18,7 @@ const SinglePage = () => {
 
   const getsingleProductData = async () => {
     try {
-      let res = await axios.get(`https://zens-bankend.onrender.com/api/products/${_id}`);
+      let res = await axios.get(`http://localhost:8000/api/products/${_id}`);
       console.log(res);
       setSingleData(res.data.data);
       if (res.data.data.productImage && Array.isArray(res.data.data.productImage)) {
@@ -161,7 +161,7 @@ const SinglePage = () => {
             </div>
             <p><strong>Brand</strong> : {singleData.productBrand}</p>
             <p><strong>Item Form</strong> : {singleData.productItem}</p>
-            <p><strong>Number of Items</strong> : {singleData.productItemNumberOf}</p>
+            <p><strong>Number of Teblets</strong> : {singleData.productItemNumberOf}</p>
             <p><strong>Net Quantity</strong> : {singleData.productQuantity}</p>
             <p>{singleData.productDescription}</p>
             <p dangerouslySetInnerHTML={{ __html: singleData.productDetails }}></p>

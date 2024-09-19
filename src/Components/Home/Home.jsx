@@ -5,6 +5,7 @@ import DealStart from '../DealStart/DealStart'
 import Feauture from '../Feature/Feauture'
 import HowToUse from '../HowTOUSe/HowToUse'
 import Product from '../Product/Product'
+import Category from '../Category/Category'
 import Newsletter from '../Newsletter/Newsletter'
 import Testimonial from '../Testimonial/Testimonial'
 import Blog from '../Blog/Blog'
@@ -15,10 +16,11 @@ const Home = () => {
     <>
       <HeroSection />
       <About />
-      <Product />
-      <DealStart />
-      <Feauture />
       <Shop />
+      {/* <DealStart /> */}
+      <Feauture />
+      
+      <Category />
       {/* <HowToUse /> */}
       {/* <Product /> */}
       {/* <Testimonial /> */}

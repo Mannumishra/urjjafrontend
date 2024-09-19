@@ -1,0 +1,26 @@
+/* Apply this when on the /about page */
+.about-page {
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrolling on the main container */
+}
+
+/* Fix the image on the left side */
+.image-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%; /* Keep the image at half the width */
+    height: 100%; /* Full height to match the screen */
+}
+
+/* Make the content on the right side scrollable */
+.content-scroll {
+    height: 100vh;
+    overflow-y: auto; /* Enable vertical scroll */
+    padding-right: 20px;
+}
+
+/* Normal behavior on other pages (e.g., homepage) */
+.container-fluid:not(.about-page) {
+    overflow: unset; /* No scroll */
+}

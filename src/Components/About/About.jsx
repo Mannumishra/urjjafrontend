@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import Newsletter from '../Newsletter/Newsletter'
 import { Link } from 'react-router-dom'
-import image from '../../Images/WhatsApp Image 2024-08-05 at 12.53.42.jpeg'
+import image from '../../Images/zens about.jpeg'
+import "./About.css"
 
 const About = () => {
     const location = window.location.pathname
@@ -35,54 +36,6 @@ const About = () => {
             <div class="container-fluid py-5">
                 <div class="container">
                     <div class="row g-4" >
-                        <div class="col-md-3 py-5 px-3" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                            <i class="fa fa-pills fa-3x text-dark mb-4"></i>
-                            <h5 class="text-dark mb-0">100% Organic</h5>
-                        </div>
-                        <div className="col-md-3 py-5 px-3" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                            <i class="fa fa-heartbeat fa-3x text-dark mb-4"></i>
-                            <h5 class="text-dark mb-0">Boosts Immunity</h5>
-                        </div>
-                        <div className="col-md-3 py-5 px-3" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                            <i class="fa fa-stethoscope fa-3x text-dark mb-4"></i>
-                            <h5 class="text-dark mb-0">Clinically Tested</h5>
-                        </div>
-                        <div class="col-md-3 py-5 px-3" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                            <i class="fa fa-certificate fa-3x text-dark mb-4"></i>
-                            <h5 class="text-dark mb-0">Certified Quality</h5>
-                        </div>
-                        {/* <div className="col-md-2 py-5 px-3" style={{display:"flex",flexDirection:"column" ,justifyContent:"center" ,alignItems:"center"}}>
-                            <i class="fa fa-tint-slash fa-3x text-dark mb-4"></i>
-                            <h5 class="text-dark mb-0">Anti Hair Fall</h5>
-                        </div>
-                        <div className="col-md-2 py-5 px-3" style={{display:"flex",flexDirection:"column" ,justifyContent:"center" ,alignItems:"center"}}>
-                            <i class="fa fa-times fa-3x text-dark mb-4"></i>
-                            <h5 class="text-dark mb-0">Hypoallergenic</h5>
-                        </div> */}
-                        {/* <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="feature-item position-relative bg-primary text-center p-3">
-                        <div class="border py-5 px-3">
-                            <i class="fa fa-leaf fa-3x text-dark mb-4"></i>
-                            <h5 class="text-white mb-0">100% Natural</h5>
-                        </div>
-                    </div>
-                </div> */}
-                        {/* <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
-                            <div class="feature-item position-relative bg-primary text-center p-3">
-                                <div class="border py-5 px-3">
-                                    <i class="fa fa-tint-slash fa-3x text-dark mb-4"></i>
-                                    <h5 class="text-white mb-0">Anti Hair Fall</h5>
-                                </div>
-                            </div>
-                        </div> */}
-                        {/* <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
-                            <div class="feature-item position-relative bg-primary text-center p-3">
-                                <div class="border py-5 px-3">
-                                    <i class="fa fa-times fa-3x text-dark mb-4"></i>
-                                    <h5 class="text-white mb-0">Hypoallergenic</h5>
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>
@@ -93,19 +46,48 @@ const About = () => {
             <div className="container-fluid">
                 <div className="container">
                     <div className="row g-5 align-items-center">
-                        <div className="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                            <img className="img-fluid animated pulse infinite" src={image} alt="Medicine" />
-                        </div>
-                        <div className="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                            <h1 className="text-primary mb-4">Health is Wealth <span className="fw-light text-dark"> - Quality Medicines for Your Well-being</span></h1>
-                            <p className="mb-4">Quality medicine is essential for maintaining health and managing diseases effectively. It ensures that patients receive the correct treatment, leading to better health outcomes and improved quality of life.</p>
-                            <p className="mb-4">Our range of medicines is rigorously tested and approved to ensure they meet the highest standards of safety and efficacy. By choosing our products, you can trust that you are making a responsible choice for your health.</p>
-                            <p className="mb-4">In addition to high-quality medicines, we offer guidance on proper usage and dosage to maximize benefits and minimize risks. Our commitment to excellence in healthcare is reflected in every product we offer.</p>
-                            <Link className="btn btn-primary py-2 px-4" to="/product">Shop Now</Link>
+                        {/* Conditionally render the image only on the homepage */}
+                        {location !== "/about" && (
+                            <div className="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <img className="img-fluid animated pulse infinite" src={image} alt="Medicine" />
+                            </div>
+                        )}
+
+                        {/* Adjust column width based on the location */}
+                        <div className={`col-lg-${location === "/about" ? "12" : "6"} wow fadeIn`} data-wow-delay="0.5s">
+                            <h1 className="text-primary mb-4">We Are Committed <span className="fw-light text-dark"> -To Quality Economy & Efficacy</span></h1>
+                            {location === "/about" ? <h3>About Us</h3> : null}
+                            <p className="mb-4">Welcome to <strong>Zens Health Care</strong>, a leader in pharmaceutical innovation dedicated to improving global health and well-being. We are committed to delivering high-quality, effective, and accessible medications to patients worldwide.</p>
+                            {location === "/about" ? <h3>Our Mission</h3> : null}
+                            <p className="mb-4">Our mission is to enhance the quality of life for individuals by providing innovative pharmaceuticals. We are driven by a passion for science and a commitment to meet the evolving healthcare needs of communities around the globe.</p>
+                            {location === "/about" ? <h3>Our Expertise</h3> : null}
+                            <p className="mb-4">Our extensive portfolio includes a range of medications, from life-saving treatments for chronic conditions to everyday wellness products. We leverage advanced technologies and collaborate with healthcare providers to bring new and effective treatments to market swiftly and safely.</p>
+
+                            {/* Additional content for the /about page */}
+                            {location === "/about" && (
+                                <>
+                                    <h3>Our Values</h3>
+                                    <p className="mb-4">
+                                        • Quality: Patient safety and product quality are at the core of everything we do. We adhere to the highest standards in every aspect of our work, from research and manufacturing to distribution. <br />
+                                        • Integrity: We operate with transparency and ethical practices, ensuring that we earn the trust of healthcare professionals, patients, and stakeholders. <br />
+                                        • Patient-Centric Approach: Our focus is on the patient. We strive to understand and address their needs, ensuring our products are not only effective but also accessible.
+                                    </p>
+                                    <h3>Commitment to Sustainability</h3>
+                                    <p className="mb-4">We believe in making a positive impact not just on individual lives but also on the environment. Our commitment to sustainability is reflected in our eco-friendly manufacturing processes, reduction of carbon footprint, and initiatives to promote health and wellness in the communities we serve.</p>
+                                    <h3>Our History</h3>
+                                    <p className="mb-4">Founded in 2014, Zens Health Care has grown from a small research lab into a globally recognized pharmaceutical company. Our journey is marked by milestones in medical breakthroughs, regulatory approvals, and a steadfast dedication to improving health outcomes.</p>
+                                    <h3>Join Us</h3>
+                                    <p className="mb-4"> At Zens Health Care, we believe that collaboration is key to achieving our mission. We invite healthcare professionals, researchers, and partners to join us in our pursuit of a healthier world.</p>
+                                </>
+                            )}
+
+                            <Link className="btn btn-primary py-2 px-4" to="/about">Show More</Link>
                         </div>
                     </div>
                 </div>
             </div>
+
+
             {/* <!-- About End --> */}
 
             {location === '/about' ? <Newsletter /> : null}

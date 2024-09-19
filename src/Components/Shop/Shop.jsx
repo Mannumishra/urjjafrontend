@@ -11,7 +11,7 @@ const Shop = () => {
     // Fetch API data
     const getApiData = async () => {
         try {
-            const res = await axios.get("https://zens-bankend.onrender.com/api/products");
+            const res = await axios.get("http://localhost:8000/api/products");
             console.log(res);
             if (res.status === 200) {
                 setProducts(res.data.data);
@@ -38,12 +38,12 @@ const Shop = () => {
             setHasMore(false); // No more products to load
         }
     };
-    useEffect(()=>{
+    useEffect(() => {
         window.scrollTo({
-            top:0,
-            behavior:"smooth"
+            top: 0,
+            behavior: "smooth"
         })
-    },[])
+    }, [])
 
     return (
         <>
@@ -66,8 +66,8 @@ const Shop = () => {
             <div className="container-fluid py-5">
                 <div className="container">
                     <div className="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style={{ maxWidth: "600px" }}>
-                        <h1 className="text-primary mb-3"><span className="fw-light text-dark">Our Natural</span> Medicines</h1>
-                        <p className="mb-5">Our natural medicines provide effective and holistic solutions for your health, using organic ingredients to support your well-being and vitality.</p>
+                        <h1 className="text-primary mb-3"><span className="fw-light text-dark">Explore Our</span> Natural Remedies</h1>
+                        <p className="mb-5">Discover our range of natural remedies designed to enhance your well-being. Each product is crafted with organic ingredients to offer you effective and holistic health solutions.</p>
                     </div>
                     <div className="row g-4">
                         {filterdata.slice(0, visibleProducts).map((item, index) => (
@@ -91,10 +91,10 @@ const Shop = () => {
                         ))}
                         {hasMore && (
                             <div className="col-12 text-center">
-                               {
-                                location==="/shop"? <button className="btn btn-primary py-2 px-4" onClick={loadMoreProducts}>Load More Products</button>:
-                                <Link className="btn btn-primary py-2 px-4"to="/shop">Load More Products</Link>
-                               }
+                                {
+                                    location === "/shop" ? <button className="btn btn-primary py-2 px-4" onClick={loadMoreProducts}>Load More Products</button> :
+                                        <Link className="btn btn-primary py-2 px-4" to="/shop">Load More Products</Link>
+                                }
                             </div>
                         )}
                     </div>

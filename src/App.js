@@ -30,6 +30,7 @@ import Shop from './Components/Shop/Shop';
 import ForgetPassword from './Components/ForgetPassword/ForgetPassword';
 import ChangePassword from './Components/ChangePassword/ChangePassword';
 import OrderConfirmation from './Components/OrderConfirmation/OrderConfirmation';
+import BynameDetails from './Components/ProductDetails/BynameDetails';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path='/product' element={<Product />} />
           <Route path='/shop' element={<Shop />} />
           <Route path='/details/:_id' element={<SinglePage />} />
+          <Route path='/details/name/:_id' element={<BynameDetails />} />
           <Route path='/feature' element={<Feauture />} />
           <Route path='/how_to_use' element={<HowToUse />} />
           <Route path='/testimonial' element={<Testimonial />} />

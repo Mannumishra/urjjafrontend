@@ -54,7 +54,7 @@ const Checkout = () => {
         setLoading(true);
         if (formData.paymentMode === 'Cash on Delivery') {
             try {
-                const response = await axios.post('https://zens-bankend.onrender.com/api/checkout', formData);
+                const response = await axios.post('http://localhost:8000/api/checkout', formData);
                 console.log(response);
                 toast.success('Checkout completed successfully!');
                 localStorage.removeItem(cartKey); // Remove the relevant cart items
@@ -77,7 +77,7 @@ const Checkout = () => {
     const submitOrder = async (paymentId = '') => {
         setLoading(true);
         try {
-            const response = await axios.post('https://zens-bankend.onrender.com/api/checkout', {
+            const response = await axios.post('http://localhost:8000/api/checkout', {
                 ...formData,
                 transactionId: paymentId,
                 paymentStatus: paymentId ? 'completed' : 'Pending'
@@ -95,7 +95,7 @@ const Checkout = () => {
 
     const handleRazorpayPayment = async () => {
         try {
-            const response = await axios.post('https://zens-bankend.onrender.com/api/checkout', formData);
+            const response = await axios.post('http://localhost:8000/api/checkout', formData);
             const { razorpayOrderId, amount, currency } = response.data;
         
             // Convert amount to integer (paise)
@@ -115,7 +115,7 @@ const Checkout = () => {
         
                     try {
                         // Call the backend to verify the payment
-                        await axios.post('https://zens-bankend.onrender.com/api/verify-payment', {
+                        await axios.post('http://localhost:8000/api/verify-payment', {
                             razorpay_payment_id: paymentId,
                             razorpay_order_id: orderId,
                             razorpay_signature: signature,
